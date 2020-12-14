@@ -1,0 +1,18 @@
+
+class Owner:  # updates all the previous instances as there is only one owner at the time
+
+	__instance = None
+
+	def __new__(cls, name):
+		if cls.__instance is None:
+			cls.__instance = object.__new__(cls)
+		cls.__instance.name = name
+		return  cls.__instance
+
+	def __call__(cls, *args, **kwargs):
+		print(f'Owner is {cls.__instance.name}')
+
+
+
+
+
