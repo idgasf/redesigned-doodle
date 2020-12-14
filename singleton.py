@@ -1,5 +1,5 @@
 
-class Owner:  # updates all the previous instances as there is only one owner at the time
+class Owner:
 
 	__instance = None
 
@@ -7,12 +7,15 @@ class Owner:  # updates all the previous instances as there is only one owner at
 		if cls.__instance is None:
 			cls.__instance = object.__new__(cls)
 		cls.__instance.name = name
-		return  cls.__instance
+		return cls.__instance
 
 	def __call__(cls, *args, **kwargs):
 		print(f'Owner is {cls.__instance.name}')
 
 
-
-
-
+if __name__ == "__main__":
+	own_1 = Owner('First')
+	own_1()
+	own_2 = Owner('Second')
+	own_2()
+	own_1()
